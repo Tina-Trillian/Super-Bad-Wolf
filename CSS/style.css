@@ -1,0 +1,13 @@
+body {
+  background-color: black;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  border: 3px solid red;
+}
