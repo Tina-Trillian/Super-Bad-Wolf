@@ -41,7 +41,7 @@ Wolf.prototype.newPos = function () {
 
 Wolf.prototype.jump = function () {
      if (this.jumping === false && this.ducking === false) {
-     this.dy = -4.5;
+     this.dy = -4.4;
      this.jumping = true}
    }
 
