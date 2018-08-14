@@ -110,3 +110,53 @@ Wolf.prototype.jumpAtBottom = function(block) {
         this.top() > block.top()
       )
     }
+
+Wolf.prototype.checkJaegerCollision = function(jaeger) {
+  if (this.crashWith(jaeger) && jaeger.dead === false) {
+     if (Math.floor(this.bottom()) >= jaeger.top() &&
+          this.dy > 0) {
+
+      jaeger.death();
+      jaeger.dead = true;
+      score += 100;
+    }
+    else {
+      console.log("wolf is dead");
+       stopGame(); 
+    }
+  }
+}
+
+Wolf.prototype.checkCollision = function(obstacle) {
+  if(this.crashWith(obstacle)) {
+     stopGame();
+  }
+}
+
+Wolf.prototype.checkCollected = function(sheep) {
+  if(this.crashWith(sheep)) {
+    score += 100;
+    var index = sheepToken.indexOf(sheep);
+    sheepToken.splice(index,1);
+  }
+}
+
+Wolf.prototype.checkBlocks = function(block) {
+  if(this.jumpOn(block)) {
+    this.floorY = block.y;
+  }
+  else if (this.x > (block.x+block.width) && this.floorY < 450) {
+    this.floorY = 450;
+  }
+  else if (this.jumpAgainst(block)) {
+    if (this.right() === block.left()) {
+
+    this.x -= 1;
+     }
+   }
+  if (this.jumpAtBottom(block)) {
+    if (this.top() < block.bottom() && this.jumping === true) {
+      this.dy = 1;
+    }
+  }
+}
