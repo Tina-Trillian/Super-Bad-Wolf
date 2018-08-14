@@ -31,7 +31,6 @@ function Component(width, height, color, x, y) {
     if (this.x < 100 && this.jumping === false) {
       this.x += 0.5;
     }
-    
   
      if (this.y > (this.floorY-this.height)) {
         this.dy = 0;
@@ -67,10 +66,10 @@ function Component(width, height, color, x, y) {
     };
     this.crashWith = function(obstacle) {
       return !(
-        this.bottom() < obstacle.top() ||
-        this.top() > obstacle.bottom() ||
-        this.right() < obstacle.left() ||
-        this.left() > obstacle.right()
+        this.bottom() <= obstacle.top() ||
+        this.top() >= obstacle.bottom() ||
+        this.right() <= obstacle.left() ||
+        this.left() >= obstacle.right()
       );
     }
     this.jumpOn = function(block) {
@@ -85,6 +84,12 @@ function Component(width, height, color, x, y) {
       return ! (
         this.bottom() < block.top() &&
         this.top() > block.bottom()
+      )
+    }
+    this.jumpAtBottom = function(block) {
+      return (
+        this.right() > block.left() &&
+        this.left() < block.right()
       )
     }
     
@@ -200,7 +205,9 @@ function updateCanvas() {
   
     for (var i = 0; i < jaegerObstacles.length; i++) {
       if (wolf.crashWith(jaegerObstacles[i]) && jaegerObstacles[i].dead === false) {
-        if (Math.floor(wolf.bottom()) === jaegerObstacles[i].top()) {
+        console.log("death")
+        if (Math.floor(wolf.bottom()) >= jaegerObstacles[i].top()) {
+
           jaegerObstacles[i].death();
           jaegerObstacles[i].dead = true;
         }
@@ -224,8 +231,14 @@ function updateCanvas() {
       if (wolf.right() === blocks[i].left()) {
 
       wolf.x -= 1;
+       }
+     }
+    if (wolf.jumpAtBottom(blocks[i])) {
+      if (wolf.top() < blocks[i].bottom() && wolf.jumping === true) {
+        wolf.dy = 1;
+        // wolf.jumping === false;
+      }
     }
-  }
 }
 
    for (var i = 0; i < waterObstacles.length; i++) {
