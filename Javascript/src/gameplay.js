@@ -29,27 +29,6 @@ function startGame() {
   interval = setInterval(updateCanvas, 1000/100);
 }
 
-
-function createWater() {
-   var newWater = new Water(70,50,"blue",canvas.width,450);
-   waterObstacles.push(newWater);
-   }
-
-function createJaeger() {
-    var newJaeger = new Jaeger(50,90,"yellow",canvas.width,360);
-    jaegerObstacles.push(newJaeger);
-  }
-
-function createBullet(array) {
-  for (var j = 0; j < array.length; j++) {
-    if (array[j].dead === false) {
-      var newBullet = new Bullet(10,10,"red",array[j].x,375);
-      bulletObstacles.push(newBullet)
-    }
-  }
-}
-
-
 function cleanArray(array) {
   for (var i = 0; i < array.length; i++) {
     if (array[i].x < 0-array[i].width) {
@@ -58,7 +37,6 @@ function cleanArray(array) {
   }
 }
 
-
 function drawArray(array) {
   for (var i = 0; i < array.length; i++) {
     array[i].x--;
@@ -66,13 +44,11 @@ function drawArray(array) {
   }
 }
 
-
 function drawArrayDeath(array) {
   for (var i = 0; i < array.length; i++) {
     array[i].draw();
   }
 }
-
 
 function drawBullets() {
   for ( i = 0; i < bulletObstacles.length; i++) {
@@ -91,7 +67,6 @@ function addObstacle() {
         createJaeger();
         break;
       case 2:
-        console.log("none");
         addBlockGroup();
         break;
        default:

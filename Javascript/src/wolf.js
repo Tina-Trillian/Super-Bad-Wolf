@@ -56,6 +56,9 @@ Wolf.prototype.duck = function () {
 Wolf.prototype.death = function () {
      this.dy = -5;
      this.floorY = 700
+     this.jumping = true;
+     console.log(wolf.ducking);
+     console.log(wolf.jumping);
     }
 
 
@@ -139,6 +142,12 @@ Wolf.prototype.checkCollision = function(array) {
       default:
         stopGame();
         break;
+    }
+  }
+  else {
+    switch (array) {
+      case blocks:
+      
     }
   }
 }

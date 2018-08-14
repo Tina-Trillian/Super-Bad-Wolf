@@ -55,3 +55,18 @@ function Bullet(width, height, color, x, y) {
     };  
 }
 
+function createJaeger() {
+  var newJaeger = new Jaeger(50,90,"yellow",canvas.width,360);
+  jaegerObstacles.push(newJaeger);
+}
+
+
+function createBullet(array) {
+  for (var j = 0; j < array.length; j++) {
+    if (array[j].dead === false) {
+      var newBullet = new Bullet(10,10,"red",array[j].x,375);
+      bulletObstacles.push(newBullet)
+    }
+  }
+}
+

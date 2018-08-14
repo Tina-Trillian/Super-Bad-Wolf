@@ -22,3 +22,8 @@ function Water(width, height, color, x, y) {
     return this.y + this.height;
   };
 }
+
+function createWater() {
+  var newWater = new Water(70,50,"blue",canvas.width,450);
+  waterObstacles.push(newWater);
+  }
