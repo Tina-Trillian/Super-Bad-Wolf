@@ -123,6 +123,18 @@ function updateCanvas() {
     createBullet(jaegerObstacles);
     }
 
+ 
+
+  wolf.checkCollision(jaegerObstacles);
+  wolf.checkCollision(waterObstacles);
+  wolf.checkCollision(bulletObstacles);
+  wolf.checkCollision(sheepToken);
+
+
+  for (var i = 0; i < blocks.length; i++) {
+    wolf.checkBlocks(blocks[i]);
+  }
+
   wolf.newPos();
   wolf.draw();
   floor.draw();
@@ -134,27 +146,6 @@ function updateCanvas() {
   drawBullets();
 
   
-
-  for (var i = 0; i < jaegerObstacles.length; i++) {
-    wolf.checkJaegerCollision(jaegerObstacles[i]);
-  }
-
-  for (var i = 0; i < bulletObstacles.length; i++) {
-    wolf.checkCollision(bulletObstacles[i]);
-  }
-
-  for (var i = 0; i < waterObstacles.length; i++) {
-    wolf.checkCollision(waterObstacles[i]);
-  }
-
-  for (var i = 0; i < sheepToken.length; i++) {
-    wolf.checkCollected(sheepToken[i]);
-  }
-
-
-  for (var i = 0; i < blocks.length; i++) {
-   wolf.checkBlocks(blocks[i]);
-  }
 }
 
 
