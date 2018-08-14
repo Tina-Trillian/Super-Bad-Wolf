@@ -54,8 +54,8 @@ Wolf.prototype.duck = function () {
 
 
 Wolf.prototype.death = function () {
-     this.height = 20
-     this.y = canvas.height-50-this.height;
+     this.dy = -5;
+     this.floorY = 700
     }
 
 
