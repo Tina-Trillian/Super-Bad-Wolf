@@ -1,4 +1,4 @@
-function Block(width, height, color, x, y) {
+function Water(width, height, color, x, y) {
   this.width = width,
   this.height = height,
   this.x = x,
@@ -21,5 +21,4 @@ function Block(width, height, color, x, y) {
   this.bottom = function() {
     return this.y + this.height;
   };
- 
 }
