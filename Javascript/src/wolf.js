@@ -89,7 +89,8 @@ function Component(width, height, color, x, y) {
     this.jumpAtBottom = function(block) {
       return (
         this.right() > block.left() &&
-        this.left() < block.right()
+        this.left() < block.right() &&
+        this.top() > block.top()
       )
     }
     
@@ -116,7 +117,7 @@ function Component(width, height, color, x, y) {
 var myGameArea = {
   frames: 0,
   stop: function () {
-    console.log("stop");
+    console.log("stop")
   }
 }
 
@@ -206,7 +207,9 @@ function updateCanvas() {
     for (var i = 0; i < jaegerObstacles.length; i++) {
       if (wolf.crashWith(jaegerObstacles[i]) && jaegerObstacles[i].dead === false) {
         console.log("death")
-        if (Math.floor(wolf.bottom()) >= jaegerObstacles[i].top()) {
+        // if (Math.floor(wolf.bottom()) >= jaegerObstacles[i].top()) {
+         if (wolf.bottom() < jaegerObstacles[i].top()+3 &&
+             wolf.bottom() > jaegerObstacles[i].top()-3) {
 
           jaegerObstacles[i].death();
           jaegerObstacles[i].dead = true;
@@ -225,7 +228,7 @@ function updateCanvas() {
       wolf.floorY = blocks[i].y;
     }
     else if (wolf.x > (blocks[i].x+blocks[i].width) && wolf.floorY < 450) {
-      wolf.floorY++;
+      wolf.floorY = 450;
     }
     else if (wolf.jumpAgainst(blocks[i])) {
       if (wolf.right() === blocks[i].left()) {
