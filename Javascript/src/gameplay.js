@@ -1,11 +1,8 @@
 var canvas = document.getElementById("game-area");
 var ctx = canvas.getContext("2d");
 
-var interval,wolf,floor,deathInterval;
-var waterObstacles = [];
-var jaegerObstacles = [];
-var bulletObstacles = [];
-var blocks = [];
+var interval,wolf,floor,deathInterval, waterObstacles,jaegerObstacles,bulletObstacles, blocks;
+
 
 var myGameArea = {
   frames: 0,
@@ -23,6 +20,11 @@ function startGame() {
 
   floor = new Floor(700, 50, "green",0, 450);
   floor.draw();
+
+  waterObstacles = [];
+  jaegerObstacles = [];
+  bulletObstacles = [];
+  blocks = [];
 
   interval = setInterval(updateCanvas, 1000/70);
 }
