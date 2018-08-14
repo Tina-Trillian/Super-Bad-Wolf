@@ -28,10 +28,20 @@ function Sheep(width, height, color, x, y) {
 
 function createSheep(block) {
 
-  var randomNumber = Math.floor(Math.random*2);
-
-  if (randomNumber === 0) {
-  var newSheep = new Sheep(40,40,"white",block.x+10,block.y-100)
-  sheepToken.push(newSheep)
+  if (block.y === 280) {
+    var randomNumber = Math.floor(Math.random()*2);
+    console.log(randomNumber)
+    if (randomNumber === 0) {
+      var newSheep = new Sheep(40,40,"white",block.x+10,block.y-50)
+      sheepToken.push(newSheep)
+    }
+  }
+  else if (block.y === 200) {
+    var randomNumber = Math.floor(Math.random()*3);
+    console.log(randomNumber)
+    if (randomNumber > 0) {
+      var newSheep = new Sheep(40,40,"white",block.x+10,block.y-50)
+      sheepToken.push(newSheep)
+    }
   }
 }

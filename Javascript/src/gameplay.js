@@ -9,7 +9,7 @@ var myGameArea = {
   score: 0000,
   stop: function () {
     clearInterval(interval)
-    deathInterval = setInterval(deathUpdate,1000/70);
+    deathInterval = setInterval(deathUpdate,1000/100);
     wolf.death();
     console.log("stop")
   }
@@ -50,10 +50,6 @@ function createBullet(jaeger) {
     bulletObstacles.push(newBullet);
 }
 
-function createSheep(block) {
-  var newSheep = new Sheep(40,40,"white",block.x+10,block.y+50)
-  sheepToken.push(newSheep);
-}
 
 function cleanArray(array) {
   for (var i = 0; i < array.length; i++) {
@@ -95,8 +91,8 @@ function drawBulletsDeath() {
 
 function checkJaegerCollision(jaeger) {
   if (wolf.crashWith(jaeger) && jaeger.dead === false) {
-     if (wolf.bottom() < jaeger.top()+3 &&
-         wolf.bottom() > jaeger.top()-3) {
+     if (Math.floor(wolf.bottom()) >= jaeger.top() &&
+          wolf.dy > 0) {
 
       jaeger.death();
       jaeger.dead = true;
@@ -104,13 +100,23 @@ function checkJaegerCollision(jaeger) {
     }
     else {
       wolf.death();
-      myGameArea.stop(); }
+      console.log("wolf is dead");
+      // myGameArea.stop(); 
+    }
     }
 }
 
 function checkCollision(obstacle) {
   if(wolf.crashWith(obstacle)) {
-    myGameArea.stop();
+    // myGameArea.stop();
+  }
+}
+
+function checkCollected(sheep) {
+  if(wolf.crashWith(sheep)) {
+    myGameArea.score += 100;
+    var index = sheepToken.indexOf(sheep);
+    sheepToken.splice(index,1);
   }
 }
 
@@ -145,6 +151,7 @@ function addObstacle() {
         break;
       case 2:
         console.log("none");
+        addBlockGroup();
         break;
        default:
          break;
@@ -204,6 +211,10 @@ function updateCanvas() {
 
   for (var i = 0; i < waterObstacles.length; i++) {
     checkCollision(waterObstacles[i]);
+  }
+
+  for (var i = 0; i < sheepToken.length; i++) {
+    checkCollected(sheepToken[i]);
   }
 
 
