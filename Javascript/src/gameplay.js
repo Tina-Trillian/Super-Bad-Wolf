@@ -1,11 +1,12 @@
 var canvas = document.getElementById("game-area");
 var ctx = canvas.getContext("2d");
 
-var interval,wolf,floor,deathInterval, waterObstacles,jaegerObstacles,bulletObstacles, blocks;
+var interval,wolf,floor,deathInterval, waterObstacles,jaegerObstacles,bulletObstacles, blocks, sheepToken;
 
 
 var myGameArea = {
   frames: 0,
+  score: 0000,
   stop: function () {
     clearInterval(interval)
     deathInterval = setInterval(deathUpdate,1000/70);
@@ -15,6 +16,8 @@ var myGameArea = {
 }
 
 function startGame() {
+  myGameArea.frames = 0,
+  myGameArea.score = 0000,
   wolf = new Wolf(50,75,"grey", 100, 375);
   wolf.draw();
 
@@ -25,6 +28,7 @@ function startGame() {
   jaegerObstacles = [];
   bulletObstacles = [];
   blocks = [];
+  sheepToken = [];
 
   interval = setInterval(updateCanvas, 1000/70);
 }
@@ -40,14 +44,15 @@ function createJaeger() {
     jaegerObstacles.push(newJaeger);
   }
 
-function createBlock() {
-      var newBlock = new Block(50,50,"green",canvas.width, 280);
-      blocks.push(newBlock);
-  }
 
 function createBullet(jaeger) {
     var newBullet = new Bullet(10,10,"red",jaeger.x,375);
     bulletObstacles.push(newBullet);
+}
+
+function createSheep(block) {
+  var newSheep = new Sheep(40,40,"white",block.x+10,block.y+50)
+  sheepToken.push(newSheep);
 }
 
 function cleanArray(array) {
@@ -60,8 +65,6 @@ function cleanArray(array) {
 
 function clearArray(array) {
   array = [];
-  console.log("clear");
-  console.log(array);
 }
 
 function drawArray(array) {
@@ -97,6 +100,7 @@ function checkJaegerCollision(jaeger) {
 
       jaeger.death();
       jaeger.dead = true;
+      myGameArea.score += 100;
     }
     else {
       wolf.death();
@@ -149,21 +153,26 @@ function addObstacle() {
 
 
 
+
 function updateCanvas() {
   myGameArea.frames++;
+  
 
   cleanArray(jaegerObstacles);
   cleanArray(bulletObstacles);
   cleanArray(blocks);
   cleanArray(waterObstacles);
+  cleanArray(sheepToken);
   
 
   ctx.clearRect(0,0,canvas.width, canvas.height);
 
+  drawTime();
+  drawScore();
 
   if (myGameArea.frames % 300 === 0) {
      addObstacle();
-     }
+  }
 
   wolf.newPos();
   wolf.draw();
@@ -171,13 +180,16 @@ function updateCanvas() {
  
   drawArray(jaegerObstacles);
   drawArray(waterObstacles);
+  drawArray(sheepToken);
   drawArray(blocks);
   drawBullets();
+
   
 
   if (myGameArea.frames % 200 === 0) {
     for (var j = 0; j < jaegerObstacles.length; j++) {
-      createBullet(jaegerObstacles[j]);
+        if (jaegerObstacles[j].dead === false)
+            createBullet(jaegerObstacles[j]);
     }
   }
   
@@ -204,6 +216,8 @@ function updateCanvas() {
 function deathUpdate() {
   wolf.newPos();
   ctx.clearRect(0,0,canvas.width, canvas.height);
+  drawTime();
+  drawScore();
   floor.draw();
   drawArrayDeath(jaegerObstacles);
   drawArrayDeath(waterObstacles);
@@ -234,11 +248,11 @@ document.onkeyup = function(e) {
     wolf.y = wolf.floorY-wolf.height;
     wolf.ducking = false;
       break;
-  }
-  }
+     }
+    }
 }
 
- document.onkeydown = function(e) {
+document.onkeydown = function(e) {
    switch (e.keyCode) {
      case 38:
       wolf.jump();
