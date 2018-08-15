@@ -5,7 +5,7 @@ function Block(width, height, x, y) {
   this.y = y,
   this.ctx = ctx,
   this.image = new Image;
-  this.image.src = "../../images/Graphics_game/Block.png"
+  this.image.src = "images/Graphics_game/Block.png"
   this.draw = function () {
     this.ctx.drawImage(this.image,this.x, this.y);
   }
