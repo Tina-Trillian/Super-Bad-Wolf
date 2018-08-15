@@ -131,7 +131,7 @@ Wolf.prototype.checkCollision = function(array) {
         }
         else {
           console.log("wolf is dead");
-           stopGame(); 
+          //  stopGame(); 
         }
       }
       break;
@@ -140,7 +140,7 @@ Wolf.prototype.checkCollision = function(array) {
         sheepToken.splice(i,1);
       break;
       default:
-        stopGame();
+        // stopGame();
         break;
     }
   }

@@ -1,22 +1,26 @@
 
 var interval,wolf,floor,deathInterval, waterObstacles,jaegerObstacles,bulletObstacles, blocks, sheepToken, frames, score, gameStarted;
+var treeBack;
 
 var frames = 0;
 var score = 0;
 
 
 function drawBeginnerScreen(text1,text2,text3) {
-  var beginFloor = new Floor(700, 50, "green",0, 450);
+  var beginImage = new Image;
+  beginImage.src = "../../images/StartScreenflat.png"
   var beginWolf = new Wolf(50,75,"grey", 100, 375);
-  beginFloor.draw();
-  beginWolf.draw();
-  ctx.font = '40px VT323';
-  ctx.fillStyle = "white";
-  ctx.textAlign = "center";
-  ctx.fillText(text1, 350, 150,700);
-  ctx.font = '30px VT323';
-  ctx.fillText(text2, 350,200,700);
-  ctx.fillText(text3, 350,250,700);
+  // beginImage.onload = function(e) {
+    // ctx.drawImage(beginImage,0,0);
+    beginWolf.draw() 
+    ctx.font = '40px VT323';
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText(text1, 350, 150,700);
+    ctx.font = '30px VT323';
+    ctx.fillText(text2, 350,200,700);
+    ctx.fillText(text3, 350,250,700);
+  //  };
 }
 
 
@@ -30,9 +34,11 @@ function stopGame () {
 function startGame() {
   console.log("start");
   gameStarted = true;
-
   frames = 0,
   score = 0000,
+
+  treeBack = new Background(treeImage, "tree", 0);
+  treeBack.draw();
   wolf = new Wolf(50,75,"grey", 100, 375);
   wolf.draw();
 
@@ -128,10 +134,12 @@ function updateCanvas() {
   for (var i = 0; i < blocks.length; i++) {
     wolf.checkBlocks(blocks[i]);
   }
-
+  treeBack.update();
+  treeBack.draw();
   wolf.newPos();
   wolf.draw();
   floor.draw();
+  
  
   drawArray(jaegerObstacles);
   drawArray(waterObstacles);

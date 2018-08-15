@@ -2,6 +2,7 @@ var canvas = document.getElementById("game-area");
 var ctx = canvas.getContext("2d");
 
 window.onload = function() {
+  
   drawBeginnerScreen("--press Enter to start--","-press Arrow-Up to jump-","-press Arrow-Down to duck-");
 }
 
