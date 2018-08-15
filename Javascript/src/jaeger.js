@@ -10,11 +10,11 @@ function Jaeger(width, height, x, y) {
   this.dead = false;
 
   this.draw = function () {
-    this.ctx.drawImage(this.image,this.x,this.y,88,110);
+    this.ctx.drawImage(this.image,this.x,this.y,this.width,this.height);
      },
 
     this.death = function () {
-     this.height = 20
+     this.image.src = "../../images/Graphics_game/Jaeger_tot.png"
      this.y = canvas.height-50-this.height;
     },
     this.left = function() {

@@ -1,3 +1,7 @@
+var wolfSpriteImage = new Image;
+wolfSpriteImage.src = "../../images/Graphics_game/wolf_sprite.png";
+
+
 function Wolf(width, height, x, y) {
   this.width = width,
   this.height = height,
@@ -9,10 +13,10 @@ function Wolf(width, height, x, y) {
   this.ducking = false;
   this.dead = false;
   this.floorY = 450;
-  this.image = new Image;
-  this.image.src = "../../images/Graphics_game/wolf_walk1_einzeln.png"
+  this.clipX = 50;
+  this.clipY = 0;
   this.draw = function () {
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.ctx.drawImage(wolfSpriteImage, this.clipX,this.clipY,50,70,this.x, this.y, this.width, this.height);
   }
 }
 
@@ -23,6 +27,10 @@ function Wolf(width, height, x, y) {
 Wolf.prototype.newPos = function () {
      this.dy += 0.05;
      this.y += this.dy;
+
+     if (frames % 24 === 0 && this.jumping == false && this.ducking === false) {this.clipX += this.width}
+
+     if (this.clipX > 150 && wolf.dead === false) {this.clipX = 50}
 
      if (this.x < 0) {
        this.x = 0;
@@ -47,18 +55,20 @@ Wolf.prototype.jump = function () {
 
 Wolf.prototype.duck = function () {
      if (this.jumping === false && this.ducking === false) {
-     this.height = 55
+     this.height = 55;
      this.y = this.floorY-this.height;
      this.ducking = true}
      }
 
 
 Wolf.prototype.death = function () {
+     this.dead = true;
+     this.clipX = 200;
      this.dy = -5;
      this.floorY = 700
      this.jumping = true;
-     console.log(wolf.ducking);
-     console.log(wolf.jumping);
+     
+    ;
     }
 
 

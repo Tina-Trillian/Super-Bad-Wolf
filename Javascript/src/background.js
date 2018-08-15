@@ -22,7 +22,7 @@ Background.prototype.draw = function() {
 Background.prototype.update = function() {
   switch (this.type) {
     case "cloud":
-      this.x -= 0.5;
+      this.x -= 0.2;
       if (this.x < -1*this.image.width) {this.x = 0}
       break;
     case "tree":

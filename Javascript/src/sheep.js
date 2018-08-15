@@ -1,3 +1,8 @@
+var sheepSprite = new Image;
+sheepSprite.src = "../../images/Graphics_game"
+
+
+
 function Sheep(width, height, x, y) {
   this.width = width,
   this.height = height,

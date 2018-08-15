@@ -7,7 +7,7 @@ var score = 0;
 
 
 function drawBeginnerScreen(text1,text2,text3) {
-   var beginWolf = new Wolf(50,75, 100, 375);
+    wolf = new Wolf(50,75, 100, 375);
 
     treeBack = new Background(treeImage, "tree", 0);
     treeBack.draw();
@@ -17,8 +17,9 @@ function drawBeginnerScreen(text1,text2,text3) {
   
     floorBack = new Background(floorImage, "floor",0)
     floorBack.draw();
+    wolf.clipX = 0;
+    wolf.draw();
 
-    beginWolf.draw() 
     ctx.font = '40px VT323';
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
@@ -43,21 +44,10 @@ function startGame() {
   frames = 0,
   score = 0000,
 
-  // treeBack = new Background(treeImage, "tree", 0);
-  // treeBack.draw();
 
-  // cloudBack = new Background(cloudImage, "cloud", 0)
-  // cloudBack.draw();
-
-  // floorBack = new Background(floorImage, "floor",0)
-  // floorBack.draw();
-
-
-  wolf = new Wolf(50,75, 100, 375);
+  wolf.clipX = 50;
   wolf.draw();
 
-  // floor = new Floor(700, 50, "green",0, 450);
-  // floor.draw();
 
   waterObstacles = [];
   jaegerObstacles = [];
