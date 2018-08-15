@@ -1,9 +1,11 @@
 
 var interval,wolf,floor,deathInterval, waterObstacles,jaegerObstacles,bulletObstacles, blocks, sheepToken, frames, score, gameStarted;
-var treeBack, floorBack, cloudBack;
+var treeBack, floorBack, cloudBack, level;
 
 var frames = 0;
 var score = 0;
+var tokenScore = 0;
+var framesLevel2 = 0;
 
 
 function drawBeginnerScreen(text1,text2,text3) {
@@ -43,6 +45,8 @@ function startGame() {
   gameStarted = true;
   frames = 0,
   score = 0000,
+  tokenScore = 0,
+  level = 1;
 
 
   wolf.clipX = 50;
@@ -57,6 +61,13 @@ function startGame() {
 
 
   interval = setInterval(updateCanvas, 1000/100);
+}
+
+function testLevel() {
+  if (score >= 300) {
+    level = 2;
+    framesLevel2++
+  }
 }
 
 function cleanArray(array) {
@@ -97,7 +108,7 @@ function addObstacle() {
         createJaeger();
         break;
       case 2:
-        addBlockGroup();
+        addBlockGroup(blockImage);
         break;
        default:
          break;
@@ -106,6 +117,8 @@ function addObstacle() {
 
 function updateCanvas() {
   frames++;
+
+  testLevel();
   
 
   cleanArray(jaegerObstacles);
@@ -118,7 +131,7 @@ function updateCanvas() {
   ctx.clearRect(0,0,canvas.width, canvas.height);
 
 
-  if (frames % 300 === 0) {
+  if (frames % 300 === 0 && level === 1) {
      addObstacle();
   }
 
@@ -126,10 +139,18 @@ function updateCanvas() {
     createBullet(jaegerObstacles);
   }
 
-  if (frames % 500 === 0) {
+  if (frames % 500 === 0 && level ===1 ) {
     addRandomSheep();
   }
 
+  if (level === 2) {
+    if (frames % 70 === 0 && framesLevel2 > 100)
+    createWaterLevel2();
+    if (framesLevel2 === 200)
+    plattGroup1(plattformImage);
+    else if (framesLevel2 > 200)
+    addPlattGroup(plattformImage);
+  }
   
 
   wolf.checkCollision(jaegerObstacles);
@@ -155,6 +176,7 @@ function updateCanvas() {
   
   drawTime();
   drawScore();
+  drawSheepScore();
 
 
   drawArray(jaegerObstacles);
@@ -175,6 +197,7 @@ function deathUpdate() {
   floorBack.draw();
   drawTime();
   drawScore();
+  drawSheepScore();
   drawArrayDeath(jaegerObstacles);
   drawArrayDeath(waterObstacles);
   drawArrayDeath(blocks);

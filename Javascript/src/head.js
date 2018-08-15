@@ -22,3 +22,12 @@ function drawScore() {
   ctx.fillText("Score",525,35,350);
   ctx.fillText(curScore,525,70,350);
 }
+
+function drawSheepScore() {
+  ctx.font = '40px VT323';
+  ctx.fillStyle = "white"
+  
+  ctx.textAlign = "center";
+  ctx.drawImage(sheepSprite, 0, 0, 40, 40, 290, 15, 40, 40)
+   ctx.fillText("X " + tokenScore,370,45,200);
+}

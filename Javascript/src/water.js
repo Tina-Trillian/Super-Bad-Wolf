@@ -27,5 +27,10 @@ function createWater() {
   var randomNumber = Math.floor(Math.random()*3)
   var newWater = new Water(70,50,canvas.width,450);
   waterObstacles.push(newWater);
-  if (randomNumber !== 0) addBlockGroup();
+  if (randomNumber !== 0) addBlockGroup(blockImage);
+  }
+
+  function createWaterLevel2() {
+    var newWater = new Water(70,50,canvas.width,450);
+    waterObstacles.push(newWater);
   }
