@@ -1,17 +1,23 @@
 
 var interval,wolf,floor,deathInterval, waterObstacles,jaegerObstacles,bulletObstacles, blocks, sheepToken, frames, score, gameStarted;
-var treeBack, floorBack;
+var treeBack, floorBack, cloudBack;
 
 var frames = 0;
 var score = 0;
 
 
 function drawBeginnerScreen(text1,text2,text3) {
-  var beginImage = new Image;
-  beginImage.src = "../../images/StartScreenflat.png"
-  var beginWolf = new Wolf(50,75,"grey", 100, 375);
-  // beginImage.onload = function(e) {
-    // ctx.drawImage(beginImage,0,0);
+   var beginWolf = new Wolf(50,75, 100, 375);
+
+    treeBack = new Background(treeImage, "tree", 0);
+    treeBack.draw();
+  
+    cloudBack = new Background(cloudImage, "cloud", 0)
+    cloudBack.draw();
+  
+    floorBack = new Background(floorImage, "floor",0)
+    floorBack.draw();
+
     beginWolf.draw() 
     ctx.font = '40px VT323';
     ctx.fillStyle = "white";
@@ -20,7 +26,7 @@ function drawBeginnerScreen(text1,text2,text3) {
     ctx.font = '30px VT323';
     ctx.fillText(text2, 350,200,700);
     ctx.fillText(text3, 350,250,700);
-  //  };
+
 }
 
 
@@ -37,13 +43,17 @@ function startGame() {
   frames = 0,
   score = 0000,
 
-  treeBack = new Background(treeImage, "tree", 0);
-  treeBack.draw();
+  // treeBack = new Background(treeImage, "tree", 0);
+  // treeBack.draw();
 
-  floorBack = new Background(floorImage, "floor",0)
-  floorBack.draw();
+  // cloudBack = new Background(cloudImage, "cloud", 0)
+  // cloudBack.draw();
 
-  wolf = new Wolf(50,75,"grey", 100, 375);
+  // floorBack = new Background(floorImage, "floor",0)
+  // floorBack.draw();
+
+
+  wolf = new Wolf(50,75, 100, 375);
   wolf.draw();
 
   // floor = new Floor(700, 50, "green",0, 450);
@@ -116,8 +126,6 @@ function updateCanvas() {
 
   ctx.clearRect(0,0,canvas.width, canvas.height);
 
-  drawTime();
-  drawScore();
 
   if (frames % 300 === 0) {
      addObstacle();
@@ -140,13 +148,20 @@ function updateCanvas() {
   }
   treeBack.update();
   treeBack.draw();
+  cloudBack.update();
+  cloudBack.draw();
   floorBack.update();
   floorBack.draw();
+  
+
   wolf.newPos();
   wolf.draw();
   // floor.draw();
   
- 
+  drawTime();
+  drawScore();
+
+
   drawArray(jaegerObstacles);
   drawArray(waterObstacles);
   drawArray(sheepToken);
@@ -160,9 +175,11 @@ function updateCanvas() {
 function deathUpdate() {
   ctx.clearRect(0,0,canvas.width, canvas.height);
   wolf.newPos();
+  treeBack.draw();
+  cloudBack.draw();
+  floorBack.draw();
   drawTime();
   drawScore();
-  floor.draw();
   drawArrayDeath(jaegerObstacles);
   drawArrayDeath(waterObstacles);
   drawArrayDeath(blocks);

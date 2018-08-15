@@ -1,17 +1,17 @@
-function Wolf(width, height, color, x, y) {
+function Wolf(width, height, x, y) {
   this.width = width,
   this.height = height,
   this.x = x,
   this.y = y,
   this.ctx = ctx,
-  this.ctx.fillStyle = color,
   this.dy = 2,
   this.jumping = false;
   this.ducking = false;
   this.dead = false;
   this.floorY = 450;
+  this.image = new Image;
+  this.image.src = "../../images/Graphics_game/wolf_walk1_einzeln.png"
   this.draw = function () {
-    this.ctx.fillStyle = color;
     this.ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 }
@@ -131,7 +131,7 @@ Wolf.prototype.checkCollision = function(array) {
         }
         else {
           console.log("wolf is dead");
-          //  stopGame(); 
+           stopGame(); 
         }
       }
       break;
@@ -140,7 +140,7 @@ Wolf.prototype.checkCollision = function(array) {
         sheepToken.splice(i,1);
       break;
       default:
-        // stopGame();
+        stopGame();
         break;
     }
   }

@@ -1,14 +1,14 @@
-function Sheep(width, height, color, x, y) {
+function Sheep(width, height, x, y) {
   this.width = width,
   this.height = height,
   this.x = x,
   this.y = y,
   this.ctx = ctx,
-  this.ctx.fillStyle = color,
+  this.image = new Image;
+  this.image.src = "../../images/Graphics_game/sheep.png";
   this.collected = false;
   this.draw = function () {
-    this.ctx.fillStyle = color;
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.ctx.drawImage(this.image,this.x, this.y);
   }
   this.left = function() {
     return this.x;
@@ -32,7 +32,8 @@ function createSheep(block) {
     var randomNumber = Math.floor(Math.random()*2);
     console.log(randomNumber)
     if (randomNumber === 0) {
-      var newSheep = new Sheep(40,40,"white",block.x+10,block.y-50)
+      console.log("sheep");
+      var newSheep = new Sheep(40,40,block.x+10,block.y-50)
       sheepToken.push(newSheep)
     }
   }
@@ -40,7 +41,7 @@ function createSheep(block) {
     var randomNumber = Math.floor(Math.random()*3);
     console.log(randomNumber)
     if (randomNumber > 0) {
-      var newSheep = new Sheep(40,40,"white",block.x+10,block.y-50)
+      var newSheep = new Sheep(40,40,block.x+10,block.y-50)
       sheepToken.push(newSheep)
     }
   }

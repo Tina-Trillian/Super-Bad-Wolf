@@ -1,13 +1,13 @@
-function Water(width, height, color, x, y) {
+function Water(width, height, x, y) {
   this.width = width,
   this.height = height,
   this.x = x,
   this.y = y,
   this.ctx = ctx,
-  this.ctx.fillStyle = color,
+  this.image = new Image;
+  this.image.src = "../../images/Graphics_game/Water_obstacle.png";
   this.draw = function () {
-    this.ctx.fillStyle = color;
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.ctx.drawImage(this.image,this.x,this.y);
   }
   this.left = function() {
     return this.x;
@@ -24,6 +24,6 @@ function Water(width, height, color, x, y) {
 }
 
 function createWater() {
-  var newWater = new Water(70,50,"blue",canvas.width,450);
+  var newWater = new Water(70,50,canvas.width,450);
   waterObstacles.push(newWater);
   }
