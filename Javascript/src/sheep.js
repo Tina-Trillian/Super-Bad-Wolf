@@ -1,5 +1,5 @@
 var sheepSprite = new Image;
-sheepSprite.src = "../../images/Graphics_game"
+sheepSprite.src = "../../images/Graphics_game/sheep_sprite.png";
 
 
 
@@ -9,11 +9,10 @@ function Sheep(width, height, x, y) {
   this.x = x,
   this.y = y,
   this.ctx = ctx,
-  this.image = new Image;
-  this.image.src = "../../images/Graphics_game/sheep.png";
+  this.clipX = 0
   this.collected = false;
   this.draw = function () {
-    this.ctx.drawImage(this.image,this.x, this.y);
+    this.ctx.drawImage(sheepSprite,this.clipX, 0, 40, 40, this.x, this.y, this.width, this.height);
   }
   this.left = function() {
     return this.x;

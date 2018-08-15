@@ -55,6 +55,7 @@ function startGame() {
   blocks = [];
   sheepToken = [];
 
+
   interval = setInterval(updateCanvas, 1000/100);
 }
 

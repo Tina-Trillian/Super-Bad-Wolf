@@ -15,6 +15,7 @@ function Wolf(width, height, x, y) {
   this.floorY = 450;
   this.clipX = 50;
   this.clipY = 0;
+  
   this.draw = function () {
     this.ctx.drawImage(wolfSpriteImage, this.clipX,this.clipY,50,70,this.x, this.y, this.width, this.height);
   }
@@ -146,8 +147,12 @@ Wolf.prototype.checkCollision = function(array) {
       }
       break;
       case sheepToken:
-        score += 100;
-        sheepToken.splice(i,1);
+        if (array[i].collected === false)
+        {score += 100;
+        array[i].collected = true;
+        console.log("sheep collected")
+        array[i].clipX = 40;
+        }
       break;
       default:
         stopGame();
