@@ -1,5 +1,5 @@
 var sheepSprite = new Image;
-sheepSprite.src = "../../images/Graphics_game/sheep_sprite.png";
+sheepSprite.src = "images/Graphics_game/sheep_sprite.png";
 
 
 

@@ -6,7 +6,7 @@ function Jaeger(width, height, x, y) {
   this.ctx = ctx,
   this.image = new Image;
   this.image.height = "200";
-  this.image.src = "../../images/Graphics_game/Jaeger_einzeln.png",
+  this.image.src = "images/Graphics_game/Jaeger_einzeln.png",
   this.dead = false;
 
   this.draw = function () {
@@ -14,7 +14,7 @@ function Jaeger(width, height, x, y) {
      },
 
     this.death = function () {
-     this.image.src = "../../images/Graphics_game/Jaeger_tot.png"
+     this.image.src = "images/Graphics_game/Jaeger_tot.png"
      this.y = canvas.height-50-this.height;
     },
     this.left = function() {

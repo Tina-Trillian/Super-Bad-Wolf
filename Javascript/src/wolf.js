@@ -1,5 +1,5 @@
 var wolfSpriteImage = new Image;
-wolfSpriteImage.src = "../../images/Graphics_game/wolf_sprite.png";
+wolfSpriteImage.src = "images/Graphics_game/wolf_sprite.png";
 
 
 function Wolf(width, height, x, y) {

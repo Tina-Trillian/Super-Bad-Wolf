@@ -1,9 +1,9 @@
 var treeImage = new Image;
-treeImage.src = "../../images/Graphics_game/Endlos_base_Bäume_einzeln.png";
+treeImage.src = "images/Graphics_game/Endlos_base_Bäume_einzeln.png";
 var floorImage = new Image;
-floorImage.src = "../../images/Graphics_game/Endlos_base_Boden_einzeln.png";
+floorImage.src = "/Graphics_game/Endlos_base_Boden_einzeln.png";
 var cloudImage = new Image;
-cloudImage.src = "../../images/Graphics_game/Endlos_base_Wolken_einzeln.png";
+cloudImage.src = "images/Graphics_game/Endlos_base_Wolken_einzeln.png";
 
 
 
