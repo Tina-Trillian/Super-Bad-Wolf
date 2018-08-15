@@ -1,5 +1,7 @@
 var treeImage = new Image;
 treeImage.src = "../../images/Graphics_game/Endlos_base_Bäume_einzeln.png";
+var floorImage = new Image;
+floorImage.src = "../../images/Graphics_game/Endlos_base_Boden_einzeln.png";
 
 
 
@@ -19,13 +21,15 @@ Background.prototype.update = function() {
   switch (this.type) {
     case "cloud":
       this.x -= 0.5;
+      if (this.x < -1*this.image.width) {this.x = 0}
       break;
     case "tree":
       this.x += -0.4;
       if (this.x < -1*this.image.width) {this.x = 0}
       break;
     case "floor":
-      this.x -= 5;
+      this.x -= 1;
+      if (this.x < -1*this.image.width) {this.x = 0}
       break;
   }
 }

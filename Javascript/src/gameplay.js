@@ -1,6 +1,6 @@
 
 var interval,wolf,floor,deathInterval, waterObstacles,jaegerObstacles,bulletObstacles, blocks, sheepToken, frames, score, gameStarted;
-var treeBack;
+var treeBack, floorBack;
 
 var frames = 0;
 var score = 0;
@@ -39,11 +39,15 @@ function startGame() {
 
   treeBack = new Background(treeImage, "tree", 0);
   treeBack.draw();
+
+  floorBack = new Background(floorImage, "floor",0)
+  floorBack.draw();
+
   wolf = new Wolf(50,75,"grey", 100, 375);
   wolf.draw();
 
-  floor = new Floor(700, 50, "green",0, 450);
-  floor.draw();
+  // floor = new Floor(700, 50, "green",0, 450);
+  // floor.draw();
 
   waterObstacles = [];
   jaegerObstacles = [];
@@ -136,9 +140,11 @@ function updateCanvas() {
   }
   treeBack.update();
   treeBack.draw();
+  floorBack.update();
+  floorBack.draw();
   wolf.newPos();
   wolf.draw();
-  floor.draw();
+  // floor.draw();
   
  
   drawArray(jaegerObstacles);
