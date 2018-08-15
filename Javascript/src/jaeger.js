@@ -38,7 +38,7 @@ function Bullet(width, height, x, y) {
   this.y = y,
   this.ctx = ctx,
   this.image = new Image;
-  this.image.src = "../../images/Graphics_game/bullet.png",
+  this.image.src = "images/Graphics_game/bullet.png",
   this.draw = function () {
     this.ctx.drawImage(this.image, this.x, this.y);
      },
