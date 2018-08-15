@@ -50,3 +50,30 @@ function createSheep(block) {
     }
   }
 }
+
+
+function testSpace() {
+  var test = true
+  for (var i = 0; i < blocks.length; i++) {
+    if (blocks[i].x > (canvas.width-80) &&
+        (blocks[i].x < (canvas.width+80))) {
+          test = false;
+        }
+  }
+  return test;
+}
+
+function addRandomSheep() {
+  var randomNumber = Math.floor(Math.random()*3)
+  if(testSpace()) {
+    if (randomNumber === 0) {
+      var newSheep = new Sheep(40,40,canvas.width,280)
+      sheepToken.push(newSheep);
+    }
+    else if(randomNumber === 1) {
+      var newSheep2 = new Sheep(40,40,canvas.width,280)
+      var newSheep3 = new Sheep(40,40,canvas.width,230)
+      sheepToken.push(newSheep2,newSheep3);
+    }
+  }
+}

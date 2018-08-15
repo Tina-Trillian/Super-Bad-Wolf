@@ -124,9 +124,13 @@ function updateCanvas() {
 
   if (frames % 200 === 0) {
     createBullet(jaegerObstacles);
-    }
+  }
 
- 
+  if (frames % 500 === 0) {
+    addRandomSheep();
+  }
+
+  
 
   wolf.checkCollision(jaegerObstacles);
   wolf.checkCollision(waterObstacles);

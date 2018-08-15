@@ -142,7 +142,7 @@ Wolf.prototype.checkCollision = function(array) {
         }
         else {
           console.log("wolf is dead");
-           stopGame(); 
+          //  stopGame(); 
         }
       }
       break;
@@ -154,9 +154,15 @@ Wolf.prototype.checkCollision = function(array) {
         array[i].clipX = 40;
         }
       break;
-      default:
-        stopGame();
-        break;
+      case waterObstacles:
+      if (this.right() > (array[i].left()+20) &&
+         (this.left() < (array[i].right()-20))) {
+          //  stopGame();
+         }
+      break;
+      case bulletObstacles:
+        // stopGame();
+         break;
     }
   }
   else {
