@@ -12,7 +12,15 @@ function Sheep(width, height, x, y) {
   this.clipX = 0
   this.collected = false;
   this.draw = function () {
+    if (this.collected === false)
     this.ctx.drawImage(sheepSprite,this.clipX, 0, 40, 40, this.x, this.y, this.width, this.height);
+    else if (this.collected) {
+      ctx.save();
+      ctx.globalAlpha -= 0.1
+      this.ctx.drawImage(sheepSprite,this.clipX, 0, 40, 40, this.x, this.y, this.width, this.height);
+      ctx.restore();
+    }
+
   }
   this.left = function() {
     return this.x;

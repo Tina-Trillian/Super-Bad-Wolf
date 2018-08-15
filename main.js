@@ -6,7 +6,7 @@ window.onload = function() {
   drawBeginnerScreen("--press Enter to start--","-press Arrow-Up to jump-","-press Arrow-Down to duck-");
 }
 
-
+//test for github
 
 
 window.addEventListener("keydown", function(e) {
