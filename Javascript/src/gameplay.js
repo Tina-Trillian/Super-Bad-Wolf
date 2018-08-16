@@ -37,11 +37,9 @@ function stopGame () {
     clearInterval(interval)
     deathInterval = setInterval(deathUpdate,1000/100);
     wolf.death();
-    console.log("stop");
 }
 
 function startGame() {
-  console.log("start");
   gameStarted = true;
   frames = 0,
   score = 0000,
@@ -144,11 +142,11 @@ function updateCanvas() {
   }
 
   if (level === 2) {
-    if (frames % 70 === 0 && framesLevel2 > 100)
+    if (frames % 70 === 0 && framesLevel2 > 200)
     createWaterLevel2();
-    if (framesLevel2 === 200)
+    if (framesLevel2 === 300)
     plattGroup1(plattformImage);
-    else if (framesLevel2 > 200)
+    else if (framesLevel2 > 300)
     addPlattGroup(plattformImage);
   }
   

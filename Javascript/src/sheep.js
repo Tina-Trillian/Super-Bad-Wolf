@@ -39,24 +39,31 @@ function Sheep(width, height, x, y) {
 
 
 function createSheep(block) {
-
-  if (block.y === 280) {
-    var randomNumber = Math.floor(Math.random()*2);
-    console.log(randomNumber)
-    if (randomNumber === 0) {
-      console.log("sheep");
-      var newSheep = new Sheep(40,40,block.x+10,block.y-50)
-      sheepToken.push(newSheep)
+  if (level === 1) {
+    if (block.y >= 280) {
+      var randomNumber = Math.floor(Math.random()*2);
+       if (randomNumber === 0) {
+          var newSheep = new Sheep(40,40,block.x+10,block.y-50)
+          sheepToken.push(newSheep)
+        }
     }
-  }
-  else if (block.y === 200) {
+  else if (block.y <= 200) {
     var randomNumber = Math.floor(Math.random()*3);
     console.log(randomNumber)
     if (randomNumber > 0) {
       var newSheep = new Sheep(40,40,block.x+10,block.y-50)
       sheepToken.push(newSheep)
+     }
+   }
+  }
+  else if (level === 2) {
+    var randomNumber = Math.floor(Math.random()*2)
+    if (randomNumber === 0) {
+      var newSheep = new Sheep(40,40,block.x+110,block.y-150)
+      sheepToken.push(newSheep)
     }
   }
+
 }
 
 

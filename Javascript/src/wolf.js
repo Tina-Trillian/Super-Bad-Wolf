@@ -29,7 +29,7 @@ Wolf.prototype.newPos = function () {
      this.dy += 0.05;
      this.y += this.dy;
 
-     if (frames % 24 === 0 && this.jumping == false && this.ducking === false) {this.clipX += this.width}
+     if (frames % 24 === 0 && this.jumping == false) {this.clipX += this.width}
 
      if (this.clipX > 150 && wolf.dead === false) {this.clipX = 50}
 
