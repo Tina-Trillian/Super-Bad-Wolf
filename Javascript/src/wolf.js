@@ -141,7 +141,6 @@ Wolf.prototype.checkCollision = function(array) {
           score += 100;
         }
         else {
-          console.log("wolf is dead");
           //  stopGame(); 
         }
       }
@@ -151,7 +150,6 @@ Wolf.prototype.checkCollision = function(array) {
         {score += 100;
           tokenScore += 1;
         array[i].collected = true;
-        console.log("sheep collected")
         array[i].clipX = 40;
         }
       break;
@@ -164,6 +162,12 @@ Wolf.prototype.checkCollision = function(array) {
       case bulletObstacles:
         // stopGame();
          break;
+      case whaleWaterObstacles:
+      if (this.right() > (array[i].left()+10) &&
+      (this.left() < (array[i].right()-10))) {
+         stopGame();
+      }
+      break;
     }
   }
   else {

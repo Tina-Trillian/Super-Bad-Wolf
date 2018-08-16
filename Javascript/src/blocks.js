@@ -103,6 +103,7 @@ function plattGroup1(image) {
   createSheep(newPlat1);
   var newPlat2 = new Block(70,50,image, canvas.width + 240, 200)
   createSheep(newPlat2);
+  createWhale(newPlat2);
   blocks.push(newPlat1,newPlat2);
 }
 
@@ -113,6 +114,7 @@ function plattGroup2(image) {
   var newPlat3 = new Block(70,50,image, canvas.width + 310, 120)
   var newPlat4 = new Block(70,50,image, canvas.width + 380, 120)
   createSheep(newPlat4);
+  createWhale(newPlat4);
   blocks.push(newPlat1,newPlat2,newPlat3,newPlat4);
 }
 
@@ -123,6 +125,7 @@ function plattGroup3(image) {
   createSheep(newPlat3);
   var newPlat4 = new Block(70,50,image, canvas.width + 350, 280);
   createSheep(newPlat4);
+  createWhale(newPlat4);
   blocks.push(newPlat1,newPlat2,newPlat3,newPlat4);
 }
 
@@ -130,6 +133,7 @@ function plattGroup4(image) {
   var newPlat1 = new Block(70,50,image, canvas.width, 280);
   var newPlat2 = new Block(70,50,image, canvas.width + 70, 280);
   createSheep(newPlat2);
+  createWhale(newPlat2);
   blocks.push(newPlat1,newPlat2);
 }
 
@@ -140,6 +144,7 @@ function plattGroup5(image) {
   var newPlat4 = new Block(70,50,image, canvas.width + 350, 120);
   var newPlat5 = new Block(70,50,image, canvas.width + 560, 200);
   createSheep(newPlat5);
+  createWhale(newPlat5);
   blocks.push(newPlat1,newPlat2,newPlat3,newPlat4,newPlat5);
 }
 
@@ -148,12 +153,14 @@ function plattGroup6(image) {
   var newPlat2 = new Block(70,50,image, canvas.width + 240, 200);
   var newPlat3 = new Block(70,50,image, canvas.width + 310, 200);
   createSheep(newPlat3);
+  createWhale(newPlat3);
   blocks.push(newPlat1,newPlat2,newPlat3);
 }
 
 function plattGroup7(image) {
   var newPlat1 = new Block(70,50,image, canvas.width, 200);
   createSheep(newPlat1);
+  createWhale(newPlat1);
   blocks.push(newPlat1);
 }
 

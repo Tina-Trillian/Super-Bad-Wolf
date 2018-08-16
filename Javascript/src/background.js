@@ -16,14 +16,13 @@ function Background(image, type, x) {
 }
 
 Background.prototype.draw = function() {
-  if (this.type === "floor" && framesLevel2 <= 300 || this.type === "cloud" || this.type === "tree") {
+  if (this.type === "floor" && framesLevel2 <= 200 || this.type === "cloud" || this.type === "tree") {
     ctx.drawImage(this.image, this.x, 0);
     ctx.drawImage(this.image,this.x + this.width,0)
   }
   else if (this.type === "floor") {
-     var x = Math.abs(this.x);
-     this.width = x + canvas.width - framesLevel2+250
-      ctx.drawImage(this.image, 0, 0, this.width, this.image.height, this.x, 0, this.width, this.image.height);
+     var x = Math.abs(this.x) + canvas.width - framesLevel2 + 200
+      ctx.drawImage(this.image, 0, 0, x, this.image.height, this.x, 0, x, this.image.height);
   }
 }
 

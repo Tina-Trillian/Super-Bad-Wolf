@@ -15,7 +15,6 @@ function Jaeger(width, height, x, y) {
 
     this.death = function () {
      this.image.src = "images/Graphics_game/Jaeger_tot.png"
-     this.y = canvas.height-50-this.height;
     },
     this.left = function() {
       return this.x;
@@ -65,7 +64,7 @@ function createJaeger() {
 function createBullet(array) {
   for (var j = 0; j < array.length; j++) {
     if (array[j].dead === false) {
-      var newBullet = new Bullet(10,6,array[j].x,385);
+      var newBullet = new Bullet(10,6,array[j].x,array[j].y+45);
       bulletObstacles.push(newBullet)
     }
   }

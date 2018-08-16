@@ -1,6 +1,6 @@
 
 var interval,wolf,floor,deathInterval, waterObstacles,jaegerObstacles,bulletObstacles, blocks, sheepToken, frames, score, gameStarted;
-var treeBack, floorBack, cloudBack, level;
+var treeBack, floorBack, cloudBack, level, whaleObstacles, whaleWaterObstacles;
 
 var frames = 0;
 var score = 0;
@@ -45,7 +45,7 @@ function startGame() {
   score = 0000,
   tokenScore = 0,
   level = 1;
-
+  framesLevel2 = 0;
 
   wolf.clipX = 50;
   wolf.draw();
@@ -56,13 +56,15 @@ function startGame() {
   bulletObstacles = [];
   blocks = [];
   sheepToken = [];
+  whaleObstacles = [];
+  whaleWaterObstacles = [];
 
 
   interval = setInterval(updateCanvas, 1000/100);
 }
 
 function testLevel() {
-  if (score >= 300) {
+  if (score >= 1500) {
     level = 2;
     framesLevel2++
   }
@@ -93,6 +95,14 @@ function drawBullets() {
   for ( i = 0; i < bulletObstacles.length; i++) {
     bulletObstacles[i].x -= 5;
     bulletObstacles[i].draw();
+  }
+}
+
+function drawWhaleWater() {
+  for ( i = 0; i < whaleWaterObstacles.length; i++) {
+    whaleWaterObstacles[i].y -= 7;
+    whaleWaterObstacles[i].x--;
+    whaleWaterObstacles[i].draw();
   }
 }
 
@@ -135,6 +145,7 @@ function updateCanvas() {
 
   if (frames % 200 === 0) {
     createBullet(jaegerObstacles);
+    createWhaleWater(whaleObstacles);
   }
 
   if (frames % 500 === 0 && level ===1 ) {
@@ -142,7 +153,7 @@ function updateCanvas() {
   }
 
   if (level === 2) {
-    if (frames % 70 === 0 && framesLevel2 > 200)
+    if (framesLevel2 > 200)
     createWaterLevel2();
     if (framesLevel2 === 300)
     plattGroup1(plattformImage);
@@ -155,6 +166,7 @@ function updateCanvas() {
   wolf.checkCollision(waterObstacles);
   wolf.checkCollision(bulletObstacles);
   wolf.checkCollision(sheepToken);
+  wolf.checkCollision(whaleWaterObstacles);
 
 
   for (var i = 0; i < blocks.length; i++) {
@@ -170,7 +182,6 @@ function updateCanvas() {
 
   wolf.newPos();
   wolf.draw();
-  // floor.draw();
   
   drawTime();
   drawScore();
@@ -178,6 +189,8 @@ function updateCanvas() {
 
 
   drawArray(jaegerObstacles);
+  drawArray(whaleObstacles);
+  drawWhaleWater();
   drawArray(waterObstacles);
   drawArray(sheepToken);
   drawArray(blocks);
@@ -198,12 +211,15 @@ function deathUpdate() {
   drawSheepScore();
   drawArrayDeath(jaegerObstacles);
   drawArrayDeath(waterObstacles);
+  drawArrayDeath(whaleObstacles);
+  drawArrayDeath(whaleWaterObstacles);
   drawArrayDeath(blocks);
   drawArrayDeath(sheepToken);
   drawArrayDeath(bulletObstacles);
   wolf.draw();
   if (wolf.y > 500) {
     clearInterval(deathInterval);
+    framesLevel2 = 0
     setTimeout (function() {
       gameStarted = false;
       ctx.clearRect(0,0,canvas.width, canvas.height);
