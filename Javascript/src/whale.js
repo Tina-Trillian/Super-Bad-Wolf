@@ -55,6 +55,7 @@ function createWhaleWater(array) {
   for (var j = 0; j < array.length; j++) {
       var newWater = new WhaleWater(50,40,array[j].x+10,array[i].y-20);
       whaleWaterObstacles.push(newWater);
+      splashSound.play();
     }
   }
 

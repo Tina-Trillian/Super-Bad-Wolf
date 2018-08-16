@@ -50,6 +50,7 @@ Wolf.prototype.newPos = function () {
 
 Wolf.prototype.jump = function () {
      if (this.jumping === false && this.ducking === false) {
+     jumpSound.play();
      this.dy = -4.4;
      this.jumping = true}
    }
@@ -68,7 +69,7 @@ Wolf.prototype.death = function () {
      this.dy = -5;
      this.floorY = 700
      this.jumping = true;
-     
+     loseSound.play();
     ;
     }
 
@@ -141,7 +142,7 @@ Wolf.prototype.checkCollision = function(array) {
           score += 100;
         }
         else {
-          //  stopGame(); 
+            stopGame(); 
         }
       }
       break;
@@ -151,16 +152,17 @@ Wolf.prototype.checkCollision = function(array) {
           tokenScore += 1;
         array[i].collected = true;
         array[i].clipX = 40;
+        sheepSound.play();
         }
       break;
       case waterObstacles:
       if (this.right() > (array[i].left()+20) &&
          (this.left() < (array[i].right()-20))) {
-          //  stopGame();
+            stopGame();
          }
       break;
       case bulletObstacles:
-        // stopGame();
+         stopGame();
          break;
       case whaleWaterObstacles:
       if (this.right() > (array[i].left()+10) &&

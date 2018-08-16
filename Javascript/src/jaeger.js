@@ -14,6 +14,7 @@ function Jaeger(width, height, x, y) {
      },
 
     this.death = function () {
+      deathJaegerSound.play();
      this.image.src = "images/Graphics_game/Jaeger_tot.png"
     },
     this.left = function() {
@@ -66,6 +67,7 @@ function createBullet(array) {
     if (array[j].dead === false) {
       var newBullet = new Bullet(10,6,array[j].x,array[j].y+45);
       bulletObstacles.push(newBullet)
+      shootSound.play();
     }
   }
 }

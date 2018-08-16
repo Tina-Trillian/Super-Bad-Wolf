@@ -2,11 +2,11 @@ var canvas = document.getElementById("game-area");
 var ctx = canvas.getContext("2d");
 
 window.onload = function() {
-  
+  // var x = new Sound("/Sounds/01 - Opening.ogg")
+  // x.loop = true;
+  // x.play();
   drawBeginnerScreen("--press Enter to start--","-press Arrow-Up to jump-","-press Arrow-Down to duck-");
 }
-
-//test for github
 
 
 window.addEventListener("keydown", function(e) {
@@ -31,20 +31,13 @@ document.onkeyup = function(e) {
 document.onkeydown = function(e) {
    switch (e.keyCode) {
      case 38:
+      if (gameStarted)
       wolf.jump();
        break;
      case 40:
+     if (gameStarted)
       wolf.duck();
       break;
-     case 74:
-     createJaeger();
-     break; 
-     case 87:
-     createWater();
-     break;
-     case 66:
-     createBlock();
-     break;
      case 13:
      if (!gameStarted)
      startGame();

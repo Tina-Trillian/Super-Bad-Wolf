@@ -1,6 +1,7 @@
 
 var interval,wolf,floor,deathInterval, waterObstacles,jaegerObstacles,bulletObstacles, blocks, sheepToken, frames, score, gameStarted;
 var treeBack, floorBack, cloudBack, level, whaleObstacles, whaleWaterObstacles;
+var jumpSound, deathJaegerSound, loseSound, sheepSound, shootSound, splashSound, soundTrackLevel1;
 
 var frames = 0;
 var score = 0;
@@ -37,6 +38,10 @@ function stopGame () {
     clearInterval(interval)
     deathInterval = setInterval(deathUpdate,1000/100);
     wolf.death();
+    gameStarted = false; 
+    myAudio.pause();
+    myAudio.currentTime = 0;
+    // setHighscore();
 }
 
 function startGame() {
@@ -50,6 +55,8 @@ function startGame() {
   wolf.clipX = 50;
   wolf.draw();
 
+  myAudio.play();
+
 
   waterObstacles = [];
   jaegerObstacles = [];
@@ -59,14 +66,29 @@ function startGame() {
   whaleObstacles = [];
   whaleWaterObstacles = [];
 
+  jumpSound = new Sound("Sounds/Jump_03.mp3");
+  deathJaegerSound = new Sound("Sounds/Pickup_04.mp3");
+  loseSound = new Sound("Sounds/Jingle_Lose_00.mp3");
+  sheepSound = new Sound("Sounds/Sheep - Sound.mp3");
+  shootSound = new Sound("Sounds/Hit_01.mp3")
+  splashSound = new Sound("Sounds/Explosion_01.mp3")
+  soundTrackLevel1 = new Sound("/Sounds/03 - HWV 56 - Why do the nations so furiously rage together.ogg")
+
+  //soundTrackLevel1.play();
 
   interval = setInterval(updateCanvas, 1000/100);
 }
 
 function testLevel() {
-  if (score >= 1500) {
+  if (score >= 200) {
     level = 2;
     framesLevel2++
+  }
+}
+
+function setHighscore() {
+  if (Number(highscore) < score) {
+    localStorage.setItem("Highscore", "" + score);
   }
 }
 
@@ -210,8 +232,8 @@ function deathUpdate() {
   drawScore();
   drawSheepScore();
   drawArrayDeath(jaegerObstacles);
-  drawArrayDeath(waterObstacles);
   drawArrayDeath(whaleObstacles);
+  drawArrayDeath(waterObstacles);
   drawArrayDeath(whaleWaterObstacles);
   drawArrayDeath(blocks);
   drawArrayDeath(sheepToken);
