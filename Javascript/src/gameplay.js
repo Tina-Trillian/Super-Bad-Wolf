@@ -42,7 +42,7 @@ function stopGame () {
     myAudio.pause();
     myAudio.currentTime = 0;
     var name = $("input").val();
-    updateHighScore(name,score);
+    addWinner(name,score);
 }
 
 function startGame() {
@@ -152,6 +152,8 @@ function updateCanvas() {
   cleanArray(blocks);
   cleanArray(waterObstacles);
   cleanArray(sheepToken);
+  cleanArray(whaleObstacles);
+  cleanArray(whaleWaterObstacles);
   
 
   ctx.clearRect(0,0,canvas.width, canvas.height);

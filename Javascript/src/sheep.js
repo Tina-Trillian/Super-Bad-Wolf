@@ -46,7 +46,6 @@ function createSheep(block) {
     }
   else if (block.y <= 200) {
     var randomNumber = Math.floor(Math.random()*3);
-    console.log(randomNumber)
     if (randomNumber > 0) {
       var newSheep = new Sheep(40,40,block.x+10,block.y-50)
       sheepToken.push(newSheep)
