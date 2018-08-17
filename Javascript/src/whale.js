@@ -2,7 +2,7 @@ var whaleImage = new Image;
 whaleImage.src = "images/Graphics_game/Wal.png"
 
 var whaleWaterImage = new Image;
-whaleWaterImage.src = "../../images/Graphics_game/whaleWater.png"
+whaleWaterImage.src = "images/Graphics_game/whaleWater.png"
 
 function Whale(width, height, x, y) {
   this.width = width;
