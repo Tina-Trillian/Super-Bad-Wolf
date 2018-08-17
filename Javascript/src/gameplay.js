@@ -81,7 +81,7 @@ function startGame() {
 }
 
 function testLevel() {
-  if (score >= 200) {
+  if (score >= 500) {
     level = 2;
     framesLevel2++
   }
