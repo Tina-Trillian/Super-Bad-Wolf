@@ -5,6 +5,7 @@ window.onload = function() {
   // var x = new Sound("/Sounds/01 - Opening.ogg")
   // x.loop = true;
   // x.play();
+  updateHighScore();
   drawBeginnerScreen("--press Enter to start--","-press Arrow-Up to jump-","-press Arrow-Down to duck-");
 }
 

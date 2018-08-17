@@ -11,3 +11,26 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  padding: 20px;
+  text-align: center;
+  font-size: 2em;
+  color: white;
+  background-color: black;
+  border: 2px groove grey;
+}
+
+input:active {
+  box-shadow: none;
+}
+
+h2 {
+  text-align: center;
+}
+

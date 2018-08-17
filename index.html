@@ -12,12 +12,15 @@
 <div class="title m-4">
   <img src="images/Logo.png" class="img-fluid X" alt="">
 </div>
-<div class="title m-4">
+<div class="flex">
+  <input type="text" class="col-3 m-5" placeholder="Your Name" value="anonymous">
+</div>
+<div class="title">
   <canvas id="game-area" width="700" height="500"></canvas>
 </div>
-<div>
+<div class="container mt-5">
   <h2>Highscore</h2>
-  <table class="table">
+  <table class="table col-6 mx-auto">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -28,18 +31,28 @@
     <tbody>
       <tr>
         <th scope="row">1</th>
-        <td>Empty</td>
-        <td>0000</td>
+        <td id="1-name">Empty</td>
+        <td id="1-score">0000</td>
       </tr>
       <tr>
-        <th scope="row">2</th>
-        <td>Empty</td>
-        <td>0000</td>
+        <th id="2" scope="row">2</th>
+        <td id="2-name">Empty</td>
+        <td id="2-score">0000</td>
       </tr>
       <tr>
-        <th scope="row">3</th>
-        <td>Empty</td>
-        <td>0000</td>
+        <th id="3" scope="row">3</th>
+        <td id="3-name">Empty</td>
+        <td id="3-score">0000</td>
+      </tr>
+      <tr>
+        <th id="4" scope="row">4</th>
+        <td id="4-name">Empty</td>
+        <td id="4-score">0000</td>
+      </tr>
+      <tr>
+        <th id="5" scope="row">5</th>
+        <td id="5-name">Empty</td>
+        <td id="5-score">0000</td>
       </tr>
     </tbody>
   </table>

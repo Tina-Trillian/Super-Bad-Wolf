@@ -41,7 +41,8 @@ function stopGame () {
     gameStarted = false; 
     myAudio.pause();
     myAudio.currentTime = 0;
-    // setHighscore();
+    var name = $("input").val();
+    updateHighScore(name,score);
 }
 
 function startGame() {
@@ -86,11 +87,6 @@ function testLevel() {
   }
 }
 
-function setHighscore() {
-  if (Number(highscore) < score) {
-    localStorage.setItem("Highscore", "" + score);
-  }
-}
 
 function cleanArray(array) {
   for (var i = 0; i < array.length; i++) {
@@ -217,8 +213,6 @@ function updateCanvas() {
   drawArray(sheepToken);
   drawArray(blocks);
   drawBullets();
-
-  
 }
 
 

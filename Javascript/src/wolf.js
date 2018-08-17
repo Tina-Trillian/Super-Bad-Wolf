@@ -64,10 +64,10 @@ Wolf.prototype.duck = function () {
 
 
 Wolf.prototype.death = function () {
+     this.floorY = 700;
      this.dead = true;
      this.clipX = 200;
      this.dy = -5;
-     this.floorY = 700
      this.jumping = true;
      loseSound.play();
     ;
@@ -175,13 +175,13 @@ Wolf.prototype.checkCollision = function(array) {
   else {
     switch (array) {
       case blocks:
-      
     }
   }
 }
 }
 
     Wolf.prototype.checkBlocks = function(block) {
+      if (wolf.dead === false) {
       if(this.jumpOn(block)) {
         this.floorY = block.y;
       }
@@ -199,6 +199,7 @@ Wolf.prototype.checkCollision = function(array) {
           this.dy = 1;
         }
       }
+    }
     }
 
 
