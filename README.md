@@ -6,7 +6,7 @@ To clone this repo:
 
 `$ git clone https://github.com/Tina-Trillian/Super-Bad-Wolf`
 
-To start the game open the index.html in your Browser. 
+To start the game open the `index.html` in your Browser. 
  
 ![](images/Logo.png)
 
